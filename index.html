@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TPG - Points or Cash</title>
+  <link rel="canonical" href="your-site.com/">
+  <style>
+    .flex {
+      display: flex;
+    }
+    ._padl-32 {
+      padding-left: 32px;
+    }
+    .srt {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h2>TPG Points</h2>
+  </header>
+
+
+  <div class="wrapper flex">
+    <div class="module">
+      <h3>Select your Loyalty Program</h3>
+      <select name="Loyalty Programs" id="loyalty-programs"></select>
+    </div>
+
+   <div class="module _padl-32">
+     <h3>Ticket Details</h3>
+    <form action="" id="ticket-comparison">
+      <p>Points Amount:
+        <input type="text" id="points-amount" placeholder="Enter the amount of points you have.">
+      </p>
+      <p>Cash Ticket Price:
+        <input type="text" id="ticket-price" placeholder="Enter ticket price.">
+      </p>
+      <p>
+        <button id="compare">Compare</button>
+        <button id="reset">Reset</button>
+      </p>
+    </form>
+   </div>
+  </div>
+  <div id="app" class="srt"></div>
+</main>
+
+
+  <script src="scripts.js"></script>
+</body>
+</html>
