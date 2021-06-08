@@ -6,17 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TPG - Points or Cash</title>
   <link rel="canonical" href="your-site.com/">
-  <style>
-    .flex {
-      display: flex;
-    }
-    ._padl-32 {
-      padding-left: 32px;
-    }
-    .srt {
-      visibility: hidden;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <main>
@@ -34,11 +24,11 @@
    <div class="module _padl-32">
      <h3>Ticket Details</h3>
     <form action="" id="ticket-comparison">
+      <p>Ticket Price:
+        <input type="text" id="ticket-price" placeholder="Enter ticket price.">
+      </p>
       <p>Points Amount:
         <input type="text" id="points-amount" placeholder="Enter the amount of points you have.">
-      </p>
-      <p>Cash Ticket Price:
-        <input type="text" id="ticket-price" placeholder="Enter ticket price.">
       </p>
       <p>
         <button id="compare">Compare</button>
@@ -54,10 +44,12 @@
     <h3 class="points-output"></h3>
     <h3 class="cash-output"></h3>
   </div>
-  <div id="app" class="srt"></div>
+  <div id="app" class="sr"></div>
+
+  <div class="curtain"></div>
 </main>
 
-
-  <script src="scripts.js"></script>
+  <!-- <script src="./index.js" type="module"></script> -->
+  <script src="./src/js/scripts.js"></script>
 </body>
 </html>

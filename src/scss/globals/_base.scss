@@ -1,0 +1,22 @@
+:root {
+  --curtain-bg: #28ce7e;
+  --primary: #f1f1f1;
+  --secondary: #303030;
+  --space-s: 1rem;
+  --space-m: 1.75rem;
+  --space-l: 2rem;
+  --space-xl: 2.75rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+}
+main {
+  border: 1px solid red;
+  padding-left: var(--space-xl);
+  padding-right: var(--space-xl);
+}

@@ -1,0 +1,22 @@
+.curtain {
+  background: var(--curtain-bg);
+  color: var(--primary);
+  padding: 1rem;
+  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  transform: translateY(-100%);
+  transition: all 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &_is-active {
+    transform: translateY(0);
+  }
+
+  .h2 {
+    font-size: 70px;
+    text-align: center;
+  }
+}

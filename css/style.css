@@ -1,0 +1,67 @@
+:root {
+  --curtain-bg: #28ce7e;
+  --primary: #f1f1f1;
+  --secondary: #303030;
+  --space-s: 1rem;
+  --space-m: 1.75rem;
+  --space-l: 2rem;
+  --space-xl: 2.75rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  border: 1px solid red;
+  padding-left: var(--space-xl);
+  padding-right: var(--space-xl);
+}
+
+#app {
+  min-height: 20px;
+}
+
+.curtain {
+  background: var(--curtain-bg);
+  color: var(--primary);
+  padding: 1rem;
+  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  transform: translateY(-100%);
+  transition: all 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.curtain_is-active {
+  transform: translateY(0);
+}
+.curtain .h2 {
+  font-size: 70px;
+  text-align: center;
+}
+
+header {
+  padding: 1em 0;
+}
+
+form input {
+  padding: 1rem 4rem;
+}
+
+.flex {
+  display: flex;
+}
+
+._padl-32 {
+  padding-left: 32px;
+}
+
+.srt {
+  visibility: hidden;
+}
+
+/*# sourceMappingURL=style.css.map */

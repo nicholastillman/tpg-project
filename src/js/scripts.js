@@ -2,15 +2,19 @@
 // - Your Application should allow a user to select a loyalty program
 const app = document.querySelector('#app');
 const buttons = document.querySelectorAll('button');
+const curtain = document.querySelector('.curtain');
+console.log(curtain);
 const inputs = document.querySelectorAll('#ticket-comparison input[type="text"]');
 const pointsOutput = document.querySelector('.points-output');
 const cashOutput = document.querySelector('.cash-output');
 const comparison = document.querySelector('.comparison');
 const select = document.querySelector('#loyalty-programs');
 let selectedProgram;
-
-let endpoint = './_data/loyalty-1.json';
+let endpoint = './src/_data/loyalty.json';
 let currentTPG = '';
+let userEl = document.createElement('p');
+userEl.setAttribute('class', 'h2');
+app.appendChild(userEl);
 /**
  * Fetch the Loaylty Program Data
  *
@@ -31,11 +35,9 @@ async function fetchLoyaltyPrograms() {
 async function handleSelectBoxValues() {
   // set the argument to the value of the select box
   const programs = await fetchLoyaltyPrograms();
+
   programs.items.forEach((program) => {
-    let userEl = document.createElement('p');
     let options = document.createElement('option');
-    app.appendChild(userEl);
-    userEl.textContent = 'Loading....';
     options.id = program.id;
     options.textContent = program.name;
     options.value = `${program.name.toLowerCase().replace(/\s+/g, '')}`;
@@ -96,15 +98,18 @@ async function calculatePointsPrice() {
   programPoints.items.forEach((program) => {
     // if the program.name === selectBox.value get tpg_valuation for program.name
     let programName = program.name.toLowerCase().replace(/\s+/g, '')
-
-
     if (select.options[select.selectedIndex].value === programName) {
       // get program tpg_valuation and calculate
       currentTPG = program.tpg_valuation;
+      const cashPrice = document.querySelector('#ticket-price').value;
       const pointsPrice = Math.round((availablePoints * currentTPG) + fees);
-      pointsOutput.textContent = `Points Price: ${pointsPrice}`;
       cashOutput.textContent = `Cash Price: ${ticketPrice}`;
-      console.log(pointsPrice);
+      pointsOutput.textContent = `Points Price: ${pointsPrice}`;
+
+      // Compare and output the Result
+      setTimeout(() => {
+        compare(pointsPrice, cashPrice);
+      }, 2500);
     }
     // displayLoyaltyProgram(programs.items);
      /**
@@ -114,6 +119,16 @@ async function calculatePointsPrice() {
      */
   });
 }
+async function compare(p, c) {
+  if ( p < c ) {
+    app.innerHTML = `<h2>Use Points.</h2>`;
+  } else if (c > p) {
+    app.innerHTML = `<h2>Use Cash</h2>`;
+  } else {
+    app.innerHTML = 'Both options are good. Save points by using cash. Save money by using points.'
+  }
+  resetUserInput();
+}
 
 // Handle our errors
 function handleError(err) {
@@ -121,11 +136,11 @@ function handleError(err) {
 }
 // Clear our inputs on submit or reset
 function resetUserInput() {
-
   inputs.forEach(input => {
     input.value = '';
   });
 }
+
 
 
 // Event Listeners
@@ -134,7 +149,15 @@ buttons.forEach( (button)  => {
   button.addEventListener('click', (e) => {
     e.preventDefault();
     if (e.target.id === 'compare') {
-      console.log('Comparing points to cash....');
+      userEl.textContent = 'Loading....';
+      curtain.classList.add('curtain_is-active');
+      userEl.textContent = 'Comparing points to cash....';
+      curtain.appendChild(userEl);
+
+      setTimeout(() => {
+        curtain.classList.remove('curtain_is-active');
+      }, 2000);
+
       calculatePointsPrice();
       // Todo: add some interactivity/animation delay and reset user input
     } else {
