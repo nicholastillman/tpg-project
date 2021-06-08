@@ -70,7 +70,6 @@ async function displayLoyaltyProgram(programs) {
   // comparison.innerHTML = html.join('');
   // comparison.insertAdjacentElement('afterbegin', html);
 
-
    /**
    * Todo: Add program.id's to options
    * Todo: Add icon next to Program
@@ -130,8 +129,6 @@ function resetUserInput() {
     input.value = '';
   });
 }
-
-
 
 // Event Listeners
 window.addEventListener('DOMContentLoaded', handleSelectBoxValues);
