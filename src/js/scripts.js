@@ -1,17 +1,23 @@
 // Requirements:
 // - Your Application should allow a user to select a loyalty program
+// - Let user input how many points are required for user to purchase desired ticket
+// - Let a user input how much a cash ticket costs
+// - Tell user the fees for desired ticket
+// - Compare cash ticket vs points price and tell user to use cash or points based on that comparison
+/** BEGIN */
 const app = document.querySelector('#app');
 const buttons = document.querySelectorAll('button');
 const curtain = document.querySelector('.curtain');
-console.log(curtain);
 const inputs = document.querySelectorAll('#ticket-comparison input[type="text"]');
 const pointsOutput = document.querySelector('.points-output');
 const cashOutput = document.querySelector('.cash-output');
 const comparison = document.querySelector('.comparison');
 const select = document.querySelector('#loyalty-programs');
-let selectedProgram;
+
 let endpoint = './src/_data/loyalty.json';
 let currentTPG = '';
+let selectedProgram;
+
 let userEl = document.createElement('p');
 userEl.setAttribute('class', 'h2');
 app.appendChild(userEl);
@@ -24,7 +30,6 @@ app.appendChild(userEl);
 async function fetchLoyaltyPrograms() {
   const response = await fetch(endpoint);
   const data = await response.json();
-  // console.log(data);
   return data;
 }
 /**
@@ -33,9 +38,10 @@ async function fetchLoyaltyPrograms() {
  * @param {Object} programs
  */
 async function handleSelectBoxValues() {
-  // set the argument to the value of the select box
+  // get the loyalty data.
   const programs = await fetchLoyaltyPrograms();
 
+  // loop over and set the loyalty data.name to the value of the select box options
   programs.items.forEach((program) => {
     let options = document.createElement('option');
     options.id = program.id;
@@ -55,32 +61,16 @@ async function displayLoyaltyProgram(programs) {
       <h2>${program.name}</h2>
       <div class="flex">
         ${program.icon_url &&
-        `<a href="${program.website_url}"><img src="${program.icon_url}" alt="${program.name}"/></a>`}
+        `<a href="${program.website_url}"><img src="${program.icon_url}" alt="${program.name}"/></a>`
         }
-        <p><span>${program.type}, ${program.units}</span></p>
+        <p><span>${program.type}, ${program.loyalty_unit}</span></p>
       </div>
     </div>`
   );
-  /*const html = programs.map(
-    (program) => {
-      if (program.name === selectedProgram) {
-        `<div class="program" id="program-${program.id}">
-          <h2>${program.name}</h2>
-          <div class="flex">
-            ${program.icon_url &&
-            `<a href="${program.website_url}"><img src="${program.icon_url}" alt="${program.name}"/></a>`}
-            }
-            <p><span>${program.type}, ${program.units}</span></p>
-          </div>
-        </div>`
-      }
-    }
-  );*/
   // comparison.innerHTML = html.join('');
   // comparison.insertAdjacentElement('afterbegin', html);
-  if ( selectedProgram) {
-  console.log(html);
-  }
+
+
    /**
    * Todo: Add program.id's to options
    * Todo: Add icon next to Program
@@ -96,7 +86,7 @@ async function calculatePointsPrice() {
   const programs = await fetchLoyaltyPrograms();
 
   programPoints.items.forEach((program) => {
-    // if the program.name === selectBox.value get tpg_valuation for program.name
+    // if the program.name is equal to selectBox.value get tpg valuation for program
     let programName = program.name.toLowerCase().replace(/\s+/g, '')
     if (select.options[select.selectedIndex].value === programName) {
       // get program tpg_valuation and calculate
@@ -111,7 +101,7 @@ async function calculatePointsPrice() {
         compare(pointsPrice, cashPrice);
       }, 2500);
     }
-    // displayLoyaltyProgram(programs.items);
+    displayLoyaltyProgram(programs.items);
      /**
      * Todo: the below comparision is good candidate for function
      * Need to compare cash to points value and display message to recommend
@@ -166,28 +156,3 @@ buttons.forEach( (button)  => {
     }
   })
 });
-
-// const loyaltyProgramData = fetch(endpoint);
-// loyaltyProgramData.then(response => {
-//   return response.json();
-// })
-// .then(data => {
-//   data.forEach(d => {
-//     // Add options to our select menu
-//     let options = document.createElement('option');
-//     let valuations = document.createElement('li');
-//     options.textContent = d.name;
-//     valuations.textContent = d.tpg_valuation;
-//     loyaltyPrograms.appendChild(options);
-
-//     // get the current value of the selection
-//     loyaltyPrograms.value;
-//   });
-// })
-// .catch(handleError)
-
-// - Tell user how many points are required for user to purchase desired ticket
-// - Tell user the fees for desired ticket
-// - Ask a user how much a cash ticket costs
-// const cashTicketCost = prompt( 'How much does your desired ticket cost?' );
-// - Compare cash ticket vs points price and tell user to use cash or points based on that comparison

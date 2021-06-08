@@ -1,5 +1,6 @@
 @use 'globals' as *;
-@use 'modules/app' as *;
-@use 'modules/curtain' as *;
-@use 'modules/header' as *;
-@use 'utils/tokens' as *;
+@use 'modules' as *;
+@use 'utils' as *;
+@use 'utils/panel' as *;
+// @use 'modules/curtain' as *;
+// @use 'modules/header' as *;

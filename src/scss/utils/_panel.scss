@@ -1,0 +1,18 @@
+@use 'tokens' as *;
+@use '../globals/variables' as *;
+
+$panel-variants: (
+  'primary': #dedede,
+  'secondary': #ff4250,
+);
+
+._panel {
+  @extend ._pad-32;
+  // For each color, create a variant
+  @each $panel-variant in $panel-variants {
+    &[data-panel='#{$panel-variant}'] {
+      // border: 1px solid $panel-variant;
+      background: $panel-variant;
+    }
+  }
+}
