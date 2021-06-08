@@ -1,0 +1,60 @@
+@use 'sass:color';
+@use '../globals/variables' as *;
+@use '../utils/mixins' as *;
+:root {
+  --primary: #28ce7e;
+  --light: #f1f1f1;
+  --dark: #303030;
+  --space-s: 1rem;
+  --space-m: 1.75rem;
+  --space-l: 2rem;
+  --space-xl: 2.75rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: color.scale($primary, $lightness: 95%);
+  font-family: 'Oswald', sans-serif;
+}
+main {
+  padding-left: var(--space-xl);
+  padding-right: var(--space-xl);
+}
+.wrapper {
+  @include s-shadow-1;
+  margin: 0 auto;
+  max-width: 1800px;
+  padding: 5.5%;
+}
+.container {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+button {
+  background: var(--primary);
+  border: none;
+  color: var(--light);
+  font-size: 1rem;
+  margin-top: 1em;
+  padding: 10px 1rem;
+}
+
+h1,
+h2,
+h3,
+.h1,
+.h2,
+.h3 {
+  font-family: 'Quattrocento Sans', sans-serif;
+  text-transform: uppercase;
+}

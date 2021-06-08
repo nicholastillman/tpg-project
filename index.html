@@ -6,51 +6,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TPG - Points or Cash</title>
   <link rel="canonical" href="your-site.com/">
-  <style>
-    .flex {
-      display: flex;
-    }
-    ._padl-32 {
-      padding-left: 32px;
-    }
-    .srt {
-      visibility: hidden;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<main>
+<main class="main">
   <header>
-    <h2>TPG Points</h2>
-  </header>
-
-
-  <div class="wrapper flex">
-    <div class="module">
-      <h3>Select your Loyalty Program</h3>
-      <select name="Loyalty Programs" id="loyalty-programs"></select>
+    <div class="container flex align-center space-between">
+      <div class="branding">
+        <img src="images/logo-main.svg" alt="">
+      </div>
+      <nav>
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+      </nav>
     </div>
+  </header>
+  <div class="curtain"></div>
+  <div class="wrapper">
+    <section class="flex align-center">
+      <aside class="module _panel _flex-width3" data-pane style="height: 100vh;">
+        <h3>Loyalty Programs</h3>
+        <select name="Loyalty Programs" id="loyalty-programs"></select>
+      </aside>
+      <div class="module _panel flex-2 _padl-64" style="height: 100vh;" data-pane>
+        <h3>Ticket Details</h3>
+        <form action="" id="ticket-comparison">
+          <p>Ticket:
+            <input type="text" id="ticket-price" placeholder="Enter ticket price.">
+          </p>
+          <p>Points:
+            <input type="text" id="points-amount" placeholder="Enter the amount of points you have.">
+          </p>
+          <p>
+            <button id="compare">Compare</button>
+            <button id="reset">Reset</button>
+          </p>
+        </form>
+        <section class="comparison _padt-100">
+            <h3 class="points-output"></h3>
+            <h3 class="cash-output"></h3>
+            <div id="app" class="_padt-32"></div>
+        </section>
+      </div>
+    </section>
 
-   <div class="module _padl-32">
-     <h3>Ticket Details</h3>
-    <form action="" id="ticket-comparison">
-      <p>Points Amount:
-        <input type="text" id="points-amount" placeholder="Enter the amount of points you have.">
-      </p>
-      <p>Cash Ticket Price:
-        <input type="text" id="ticket-price" placeholder="Enter ticket price.">
-      </p>
-      <p>
-        <button id="compare">Compare</button>
-        <button id="reset">Reset</button>
-      </p>
-    </form>
-   </div>
   </div>
-  <div id="app" class="srt"></div>
 </main>
 
-
-  <script src="scripts.js"></script>
+  <!-- <script src="./index.js" type="module"></script> -->
+  <script src="./src/js/scripts.js"></script>
 </body>
 </html>

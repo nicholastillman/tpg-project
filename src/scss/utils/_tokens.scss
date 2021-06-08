@@ -1,0 +1,63 @@
+@use 'mixins' as *;
+.flex {
+  display: flex;
+  &.space-between {
+    justify-content: space-between;
+  }
+  &.align-center {
+    align-content: center;
+    align-items: center;
+  }
+}
+._pad-32 {
+  padding: 32px;
+}
+._pad-64 {
+  padding: 64px;
+}
+._padl-32 {
+  padding-left: 32px;
+}
+._padr-32 {
+  padding-right: 32px;
+}
+._padt-32 {
+  padding-top: 32px;
+}
+._padl-64 {
+  padding-left: 64px;
+}
+._padr-64 {
+  padding-right: 64px;
+}
+._padt-100 {
+  padding-top: 100px;
+}
+.srt {
+  visibility: hidden;
+}
+
+.flex-full {
+  flex: 100%;
+}
+.flex-2 {
+  flex: 2;
+}
+
+._flex-width2 {
+  @include flex-width2;
+}
+._flex-width3 {
+  @include flex-width3;
+}
+._flex-width4 {
+  @include flex-width4;
+}
+._full-bleed {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+}
+[data-panel] {
+  border: 1px solid #dedede;
+}

@@ -1,0 +1,23 @@
+@use '../utils/mixins' as *;
+header {
+  @include s-shadow-dreamy;
+  margin-left: 50%;
+  padding: 1em 0;
+  transform: translateX(-50%);
+  width: 100vw;
+
+  .branding {
+    max-width: 50px;
+  }
+}
+nav {
+  a {
+    display: inline-block;
+    margin-left: 20px;
+    color: var(--dark);
+    transition: all 400ms ease-out;
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}

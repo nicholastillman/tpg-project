@@ -1,0 +1,93 @@
+$bf: 16;
+
+@mixin bp($bp, $min-max: min-width) {
+  $em: $bp/$bf;
+
+  @media (#{$min-max}: #{$em}em) {
+    @content;
+  }
+}
+
+@mixin bpmax($bp, $max: max-width) {
+  $em: $bp/$bf;
+
+  @media (#{$max}: #{$em}em) {
+    @content;
+  }
+}
+
+@mixin flex-width2 {
+  width: calc(1 / 2 * 100% - (1 -1 / 2) * 40px);
+}
+
+@mixin flex-width3 {
+  width: calc(1 / 3 * 100% - (1 -1 / 3) * 20px);
+}
+
+@mixin flex-width4 {
+  width: calc(1 / 4 * 100% - (1 -1 / 4) * 20px);
+}
+
+@mixin flex-width5 {
+  width: calc(1 / 5 * 100% - (1 -1 / 5) * 20px);
+}
+
+@mixin flex-width6 {
+  width: calc(1 / 6 * 100% - (1 -1 / 6) * 20px);
+}
+// Smooth Layered Box Shadow
+@mixin s-shadow() {
+  box-shadow: 0 1px 1px rgba(109, 109, 109, 0.025),
+    0 1.5px 1.5px rgba(109, 109, 109, 0.025),
+    0 3px 3px rgba(109, 109, 109, 0.15), 0 3px 3px rgba(109, 109, 109, 0.15);
+}
+
+@mixin s-shadow-1() {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.15),
+    0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15);
+}
+
+@mixin s-shadow-2() {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+    0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
+    0 16px 16px rgba(0, 0, 0, 0.12);
+}
+
+@mixin s-shadow-3() {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+    0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11),
+    0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
+}
+
+@mixin s-shadow-sharp() {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.2),
+    0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.1),
+    0 16px 16px rgba(0, 0, 0, 0.05);
+}
+
+@mixin s-shadow-diffuse() {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.12),
+    0 4px 4px rgba(0, 0, 0, 0.16), 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+@mixin s-shadow-dreamy() {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+    0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+    0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+}
+
+@mixin s-shadow-short() {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+    0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+    0 8px 16px rgba(0, 0, 0, 0.11);
+}
+
+@mixin s-shadow-long() {
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.09), 0 4px 2px rgba(0, 0, 0, 0.09),
+    0 8px 4px rgba(0, 0, 0, 0.09), 0 16px 8px rgba(0, 0, 0, 0.09),
+    0 32px 16px rgba(0, 0, 0, 0.09);
+}
+
+@mixin s-shadow-bottom() {
+  box-shadow: 0 9px 6px -6px rgba(0, 0, 0, 0.2);
+}
